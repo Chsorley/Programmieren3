@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "jest": "^29.7.0",
+    "vscode-websocket-alerts": "^1.0.10"
+  },
+  "scripts": {
+    "test": "jest --reporters ./tests/reporter.js --silent"
+  }
+}
