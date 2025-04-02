@@ -1,9 +1,9 @@
 const express = require("Express");
 const app = express();
 
-app.get("/", function(req, res){
+/*app.get("/", function(req, res){
    res.send("Hello world");
-});
+});*/
 
 app.get("/name/:name", function(req, res){
     const name = req.params.name;
@@ -32,6 +32,13 @@ app.get("/project", function(req, res){
 app.get("/*", function(req, res){
     res.redirect("/404");
 });
+
+app.use(express.static("gol"));
+
+app.get("/", function(req, res){
+   res.redirect("index.html");
+});
+
 
 app.listen(3000, function(){
    console.log("Example is running on port 3000");
