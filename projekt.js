@@ -78,7 +78,7 @@ class GrassEater {
     }
 
     trytoEat() {
-        let grassFields = findNeighbourPositions(this.row, this.col, 1, Grass);
+        let grassFields = findNeighbourPositions(this.row, this.col, 1, Grass) + findNeighbourPositions(this.row, this.col, 1, GrassBad);
         if (grassFields.length > 0) {
             let randomGrassField = random(grassFields);
             updateCreaturePosition(this, randomGrassField);

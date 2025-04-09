@@ -1,16 +1,18 @@
 import { fillRandomMatrix, matrixSize, matrix } from "./matrix.js";
+import Empty from "./entities/empty.js";
 
-function setup() {
-    createCanvas(matrixSize * 15, matrixSize * 15);
+export function setup() {
+    //createCanvas(matrixSize * 15, matrixSize * 15);
     fillRandomMatrix();
-    frameRate(30);
+    //frameRate(30);
 }
 
 const blockSize = 15;
+export let frameCount = 0
 
-function draw() {
-    console.log("is running")
-    background(200); // Hintergrundfarbe festlegen
+export function draw() {
+    // console.log("is running")
+    //background(200); // Hintergrundfarbe festlegen
     for (let row = 0; row < matrixSize; row++) {
         for (let col = 0; col < matrixSize; col++) {
             let obj = matrix[row][col]; // Objekt an der aktuellen Position
@@ -31,10 +33,9 @@ function draw() {
             }
 
             // Kreatur zeichnen
-            fill(obj.color); // Farbe der Kreatur setzen
-            rect(blockSize * obj.col, blockSize * obj.row, blockSize, blockSize); // Rechteck zeichnen
+            //fill(obj.color); // Farbe der Kreatur setzen
+            //rect(blockSize * obj.col, blockSize * obj.row, blockSize, blockSize); // Rechteck zeichnen
         }
     }
+    frameCount++
 }
-setup()
-setInterval(draw, 30)

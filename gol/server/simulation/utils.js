@@ -1,4 +1,5 @@
-import { matrix, matrixSize } from "./setup.js";
+import { matrix, matrixSize } from "/Users/chsorley/Desktop/Programmieren3/gol/server/simulation/matrix.js";
+import Empty from "./entities/empty.js";
 
 export function findNeighbourPositions(row, col, distance, creatureType) {
     let positions = [];

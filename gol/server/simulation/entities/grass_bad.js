@@ -4,16 +4,16 @@ import { matrix } from "/Users/chsorley/Desktop/Programmieren3/gol/server/simula
 import { frameCount } from "../setup.js";
 
 
-export default class Grass {
+export default class GrassBad{
     constructor() {
         this.stepCount = frameCount + 1;
-        this.color = "green";
-        this.energy = Math.floor(Math.random() * 3);
+        this.color = "lime";
+        this.energy = 1;
     }
 
     step() {
         this.energy++;
-        if (this.energy >= 7) {
+        if (this.energy >= 9) {
             this.multiply();
             this.energy = 0;
         }
@@ -23,7 +23,8 @@ export default class Grass {
         let emptyFields = findNeighbourPositions(this.row, this.col, 1, Empty);
         if (emptyFields.length > 0) {
             let [row, col] = emptyFields[Math.floor(Math.random() * emptyFields.length)];
-            matrix[row][col] = new Grass();
+            matrix[row][col] = new GrassBad();
         }
     }
 }
+

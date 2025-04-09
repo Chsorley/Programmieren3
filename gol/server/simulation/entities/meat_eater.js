@@ -1,7 +1,9 @@
 import Empty from "./empty.js";
-import GrassEater from "./GrassEater.js";
+import GrassEater from "/Users/chsorley/Desktop/Programmieren3/gol/server/simulation/entities/grass_eater.js";
 import { findNeighbourPositions, updateCreaturePosition } from "../utils.js";
-import { matrix } from "../../gol/setup.js";
+import { matrix } from "/Users/chsorley/Desktop/Programmieren3/gol/server/simulation/matrix.js";
+import { frameCount } from "../setup.js";
+
 
 export default class MeatEater {
     constructor() {

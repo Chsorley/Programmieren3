@@ -1,7 +1,10 @@
 import Empty from "./empty.js";
 import Grass from "./grass.js";
 import { findNeighbourPositions, updateCreaturePosition } from "../utils.js";
-import { matrix } from "../../gol/setup.js";
+import { matrix } from "../matrix.js";
+import GrassBad from "./grass_bad.js";
+import { frameCount } from "../setup.js";
+
 
 export default class GrassEater {
     constructor() {
@@ -25,6 +28,7 @@ export default class GrassEater {
         if (grassFields.length > 0) {
             let newPos = grassFields[Math.floor(Math.random() * grassFields.length)];
             updateCreaturePosition(this, newPos);
+            
             this.energy++;
         } else {
             let emptyFields = findNeighbourPositions(this.row, this.col, 1, Empty);
