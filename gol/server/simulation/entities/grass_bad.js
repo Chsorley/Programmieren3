@@ -1,30 +1,30 @@
-import Empty from "./empty.js";
+import Grass from "./grass.js";
 import { findNeighbourPositions } from "../utils.js";
 import { matrix } from "/Users/chsorley/Desktop/Programmieren3/gol/server/simulation/matrix.js";
-import { frameCount } from "../setup.js";
 
-
-export default class GrassBad{
+export default class BadGrass extends Grass {
     constructor() {
-        this.stepCount = frameCount + 1;
+        super();
         this.color = "lime";
-        this.energy = 1;
+        this.energy = 0;
     }
 
     step() {
-        this.energy++;
-        if (this.energy >= 9) {
+        if (Math.random() < 0.5) {
+            this.energy++;
+        }
+
+        if (this.energy >= 10) {
             this.multiply();
             this.energy = 0;
         }
     }
 
     multiply() {
-        let emptyFields = findNeighbourPositions(this.row, this.col, 1, Empty);
+        let emptyFields = findNeighbourPositions(this.row, this.col, 1, Grass);
         if (emptyFields.length > 0) {
             let [row, col] = emptyFields[Math.floor(Math.random() * emptyFields.length)];
-            matrix[row][col] = new GrassBad();
+            matrix[row][col] = new BadGrass();
         }
     }
 }
-

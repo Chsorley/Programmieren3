@@ -4,16 +4,22 @@ import Empty from "./empty.js";
 import { matrix } from "/Users/chsorley/Desktop/Programmieren3/gol/server/simulation/matrix.js";
 import { findNeighbourPositions, updateCreaturePosition } from "../utils.js";
 import { frameCount } from "../setup.js";
+import GrassEater from "./grass_eater.js";
 
-export default class GrassEater {
+export default class GrassEaterTank extends GrassEater{
     constructor() {
-        this.stepCount = frameCount +1;
-        this.color = "yellow";
+        super();
+        this.stepCount = frameCount + 1;
+        this.color = "purple";
         this.energy = 5;
+        this.move = 0;
     }
 
     step() {
-        this.trytoEat();
+        this.move++
+        if(this.move % 10 ===0){
+            this.trytoEat();
+        }
 
         if (this.energy >= 10) {
             this.multiply();
@@ -38,7 +44,7 @@ export default class GrassEater {
             if (target instanceof Grass) {
                 this.energy++;
             } else if (target instanceof BadGrass) {
-                this.energy += Math.random() < 0.5 ? 1 : -3;
+                this.energy += Math.random() < 0.5 ? 1 : -1,5;
             }
 
             updateCreaturePosition(this, [r, c]);
@@ -48,7 +54,7 @@ export default class GrassEater {
                 let [r, c] = emptyFields[Math.floor(Math.random() * emptyFields.length)];
                 updateCreaturePosition(this, [r, c]);
             }
-            this.energy--;
+            this.energy-0.5;
         }
     }
 
@@ -57,7 +63,7 @@ export default class GrassEater {
         let emptyFields = findNeighbourPositions(this.row, this.col, 1, Empty);
         if (emptyFields.length > 0) {
             let [r, c] = emptyFields[Math.floor(Math.random() * emptyFields.length)];
-            matrix[r][c] = new GrassEater();
+            matrix[r][c] = new GrassEaterTank();
         }
     }
 }
